@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExpenseTrackerAPI\ExpenseTrackerAPI.csproj" />
+    <ProjectReference Include="..\Ride360API\Ride360API.csproj" />
   </ItemGroup>
 
 </Project>
