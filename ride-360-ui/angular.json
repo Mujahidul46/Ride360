@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/expense-tracker-ui",
+            "outputPath": "dist/ride-360-ui",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
