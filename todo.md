@@ -3,6 +3,7 @@ Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on next: 
 - Research how GPS monitoring will work
+- Need start ride & stop ride button
 - Research what the UI will look like - possibly a calendar similar to StepUp, with a motorbike icon on each day where there is 1 or more rides. 
 Days with zero rides have no motorbike logo. The user can tap on this motorbike. Let's say it's 3, representing 3 separate rides. Then the user can click into the specific
 ride they are looking for (ordered by time with most recent at the top). Then the user can view statistics for that ride, such as top speed, average speed,

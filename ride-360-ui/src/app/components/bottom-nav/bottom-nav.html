@@ -1,20 +1,20 @@
 @if (isLoggedIn()) {
   <nav>
-    <div routerLink="/expenses">
-      <span>💰</span>
-      <span>Expenses</span>
+    <div routerLink="/rides">
+      <span>🏍️</span>
+      <span>Rides</span>
     </div>
-    <div routerLink="/add-expense">
-      <span>➕</span>
-      <span>Add Expense</span>
+    <div routerLink="/photos">
+      <span>📷</span>
+      <span>Photos</span>
+    </div>
+    <div routerLink="/start-stop-ride">
+      <span>🏁</span>
+      <span>Start/Stop Ride</span>
     </div>
     <div routerLink="/stats">
       <span>📊</span>
       <span>Stats</span>
-    </div>
-    <div routerLink="/admin-dashboard">
-      <span>👤</span>
-      <span>Admin</span>
     </div>
     <div (click)="logout()">
       <span>👋</span>

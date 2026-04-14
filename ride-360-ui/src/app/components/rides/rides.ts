@@ -7,12 +7,12 @@ import { DatePipe, DecimalPipe } from '@angular/common';
 import { AddExpense } from '../add-expense/add-expense';
 
 @Component({
-  selector: 'app-expenses',
+  selector: 'app-rides',
   imports: [DecimalPipe, DatePipe, AddExpense],
-  templateUrl: './expenses.html',
-  styleUrl: './expenses.scss',
+  templateUrl: './rides.html',
+  styleUrl: './rides.scss',
 })
-export class Expenses implements OnInit {
+export class Rides implements OnInit {
   userId! : number;
   expenses : Expense[] = [];
   totalExpense: number = 0;

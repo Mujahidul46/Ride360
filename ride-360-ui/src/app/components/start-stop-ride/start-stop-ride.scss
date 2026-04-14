@@ -1,0 +1,18 @@
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .start-stop-ride {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: green;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+    }
+}
+

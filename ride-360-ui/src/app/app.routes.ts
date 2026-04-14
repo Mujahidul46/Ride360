@@ -3,18 +3,19 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { LoginComponent  } from './components/login/login';
 import { SignupComponent } from './components/signup/signup';
 import { Stats } from './components/stats/stats';
-import { Expenses } from './components/expenses/expenses';
-import { UserDashboardComponent } from './components/user-dashboard/user-dashboard';
+import { Rides } from './components/rides/rides';
 import { AddExpense } from './components/add-expense/add-expense';
+import { StartStopRide } from './components/start-stop-ride/start-stop-ride';
+import { Photos } from './components/photos/photos';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, // empty path makes it so that login page is first one to load when app starts
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    //{ path: 'user-dashboard', component: UserDashboardComponent },
     { path: 'add-expense', component: AddExpense },
-    { path: 'expenses', component: Expenses },
-    { path: 'expenses', component: Expenses },
+    { path: 'rides', component: Rides },
     { path: 'stats', component: Stats },
     { path: 'admin-dashboard', component: AdminDashboardComponent },
+    { path: 'start-stop-ride', component: StartStopRide },
+    { path: 'photos', component: Photos },
 ];
