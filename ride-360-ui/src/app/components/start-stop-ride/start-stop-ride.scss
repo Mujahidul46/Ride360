@@ -9,18 +9,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: red;
+        background-color: green;
         border-radius: 50%;
         height: 100px;
         width: 100px;
     }
 
     .start-stop-ride-btn.active {
-        background-color: green;
+        background-color: red;
     }
-
-
-    
 }
 
 

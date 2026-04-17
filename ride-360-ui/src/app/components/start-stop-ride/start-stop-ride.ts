@@ -18,6 +18,7 @@ export class StartStopRide {
   toggleRideStatus() {
     if (!this.isRiding) {
       this.startStopwatch();
+      this.showStartRidingMessage();
     }
     else {
       this.stopStopwatch();
@@ -61,5 +62,9 @@ export class StartStopRide {
       return '0' + time.toString();
     }
     return time.toString();
+  }
+
+  showStartRidingMessage() {
+    
   }
 }
