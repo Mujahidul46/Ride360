@@ -1,8 +1,11 @@
 <div class="button-container">
     <button class="start-stop-ride-btn" [class.active]="isRiding" (click)="toggleRideStatus()">{{ isRiding ? 'Stop Ride' : 'Start Ride'}}</button>
-    <p>{{ isRiding && elapsedSeconds < 5 ? 'Have a great ride!' : ''}}</p>
+    <p>{{ isRiding && elapsedSeconds < 5 ? selectRandomRideStartGreeting() : ''}}</p>
     @if(isRiding) {
         <p>Riding for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
+    }
+    @else if(!isRiding && elapsedSeconds === 0) {
+        <p>Click 'Start Ride' to begin: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
     }
     @else {
         <p>Ride complete! You rode for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>

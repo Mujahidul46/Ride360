@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-start-stop-ride',
-  imports: [DecimalPipe],
+  imports: [],
   templateUrl: './start-stop-ride.html',
   styleUrl: './start-stop-ride.scss',
 })
@@ -14,14 +14,25 @@ export class StartStopRide {
   hours: number = 0;
   minutes: number = 0;
   timerInterval: any = null;
+  currentGreeting: string = '';
+  isDisplayingRideStartGreeting: boolean = false;
+  rideStartGreetings: string[] = [
+    'Have a great ride!',
+    'Enjoy the journey!',
+    'Stay safe out there!',
+    'Happy riding!',
+    'Let\'s go! 🏍️',
+    'Adventure awaits!',
+    'Ride your own ride 😎'
+  ];
 
   toggleRideStatus() {
     if (!this.isRiding) {
       this.startStopwatch();
-      this.showStartRidingMessage();
     }
     else {
       this.stopStopwatch();
+      this.isDisplayingRideStartGreeting = false;
     }
     this.isRiding = !this.isRiding;
   }
@@ -64,7 +75,13 @@ export class StartStopRide {
     return time.toString();
   }
 
-  showStartRidingMessage() {
+  selectRandomRideStartGreeting(): string {
+    if(!this.isDisplayingRideStartGreeting) {
+      let randomIndex = Math.floor(Math.random() * this.rideStartGreetings.length);
+      this.isDisplayingRideStartGreeting = true;
+      this.currentGreeting = this.rideStartGreetings[randomIndex];
+     }
+     return this.currentGreeting;
     
   }
 }
