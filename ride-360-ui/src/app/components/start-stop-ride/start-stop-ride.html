@@ -1,3 +1,4 @@
 <div class="button-container">
-    <button class="start-stop-ride">Start Ride</button>
+    <button class="start-stop-ride-btn" [class.active]="isRiding" (click)="toggleRideStatus()">{{ isRiding ? 'Stop Ride' : 'Start Ride'}}</button>
+    <p>Riding for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
 </div>

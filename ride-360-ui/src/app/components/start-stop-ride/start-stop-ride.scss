@@ -5,14 +5,23 @@
     align-items: center;
     height: 100vh;
 
-    .start-stop-ride {
+    .start-stop-ride-btn {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: green;
+        background-color: red;
         border-radius: 50%;
         height: 100px;
         width: 100px;
     }
+
+    .start-stop-ride-btn.active {
+        background-color: green;
+    }
+
+
+    
 }
 
+
+// when isRiding is true, the button should be green and say "Stop Ride"

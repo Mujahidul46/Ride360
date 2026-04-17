@@ -10,4 +10,4 @@ ride they are looking for (ordered by time with most recent at the top). Then th
 ride duration, time ride started and time ride ended, and any short breaks - maybe a timeline can represent this visually. If there is only 1 ride, it goes straight into the statistics of that ride, rather than showing a singular ride you can tap into. For inspiration on statistics, look into Strava.
 - Another feature idea is online sharing with other users - can create riding groups, users can create a profile with their bike name and picture, and users can get a riding style profile based on how they ride
 - Upload Photos feature
-
+- New feature: Slow speed motorcycle drill practice. E.g. U-Turn 0/10. Gamified with Exp to motivate users to practise.
