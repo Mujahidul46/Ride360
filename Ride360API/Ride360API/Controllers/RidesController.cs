@@ -109,14 +109,14 @@ namespace ExpenseTrackerAPI.Controllers
 
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteExpense(int id)
+        public ActionResult DeleteRide(int id)
         {
-            var expense = _dbContext.Expenses.Find(id);
-            if (expense == null)
+            var ride = _dbContext.Rides.Find(id);
+            if (ride == null)
             {
                 return NotFound(); 
             }
-            _dbContext.Expenses.Remove(expense);
+            _dbContext.Rides.Remove(ride);
             _dbContext.SaveChanges();
             return NoContent();
         }

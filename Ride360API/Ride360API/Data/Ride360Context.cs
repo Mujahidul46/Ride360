@@ -5,30 +5,28 @@ namespace ExpenseTrackerAPI.Data
 {
     public class ExpenseTrackerContext : DbContext
     {
-        public string expensesSchema = "ex";
+        public string ridesSchema = "rd";
         public ExpenseTrackerContext(DbContextOptions<ExpenseTrackerContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Expense> Expenses { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Ride> Rides { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Tell entity framework to use schema
-            modelBuilder.Entity<Expense>().ToTable("Expenses", expensesSchema);
-            modelBuilder.Entity<Category>().ToTable("Categories", expensesSchema);
-            modelBuilder.Entity<User>().ToTable("Users", expensesSchema);
+            modelBuilder.Entity<Ride>().ToTable("Rides", ridesSchema); // Maps Ride entity to rd.Rides in database
+            modelBuilder.Entity<User>().ToTable("Users", ridesSchema); // Maps User entity to rd.Users in database
 
             // Populate CreatedAt and UpdatedAt with current datetime
-            modelBuilder.Entity<Expense>()
-                .Property(e => e.CreatedAt)
+            modelBuilder.Entity<Ride>()
+                .Property(r => r.CreatedAt)
                 .HasDefaultValueSql("GETUTCDATE()");
 
-            modelBuilder.Entity<Expense>()
-                .Property(e => e.UpdatedAt)
+            modelBuilder.Entity<Ride>()
+                .Property(r=> r.UpdatedAt)
                 .HasDefaultValueSql("GETUTCDATE()");
             
         }
