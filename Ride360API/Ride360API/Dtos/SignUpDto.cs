@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ExpenseTrackerAPI.Dtos
+namespace Ride360API.Dtos
 {
     public class SignUpDto
     {

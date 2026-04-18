@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace ExpenseTrackerAPI.Models
+namespace Ride360API.Models
 {
     public class Ride
     {

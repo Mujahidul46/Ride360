@@ -1,6 +1,6 @@
-﻿using ExpenseTrackerAPI.Data;
-using ExpenseTrackerAPI.Dtos;
-using ExpenseTrackerAPI.Models;
+﻿using Ride360API.Data;
+using Ride360API.Dtos;
+using Ride360API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -14,10 +14,10 @@ namespace ExpenseTrackerAPI.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly ExpenseTrackerContext _dbContext;
+        private readonly Ride360Context _dbContext;
         private readonly IConfiguration _configuration;
 
-        public AuthController(ExpenseTrackerContext dbContext, IConfiguration configuration)
+        public AuthController(Ride360Context dbContext, IConfiguration configuration)
         {
             _dbContext = dbContext;
             _configuration = configuration;

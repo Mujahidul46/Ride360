@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ExpenseTrackerAPI.Models;
+using Ride360API.Models;
 
-namespace ExpenseTrackerAPI.Data
+namespace Ride360API.Data
 {
-    public class ExpenseTrackerContext : DbContext
+    public class Ride360Context : DbContext
     {
         public string ridesSchema = "rd";
-        public ExpenseTrackerContext(DbContextOptions<ExpenseTrackerContext> options)
+        public Ride360Context(DbContextOptions<Ride360Context> options)
             : base(options)
         {
         }

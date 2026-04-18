@@ -1,5 +1,5 @@
-using ExpenseTrackerAPI.Data;
-using ExpenseTrackerAPI.Mappings;
+using Ride360API.Data;
+using Ride360API.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -110,7 +110,7 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
-builder.Services.AddDbContext<ExpenseTrackerContext>(options => 
+builder.Services.AddDbContext<Ride360Context>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("ExpenseDb")));
 
 var app = builder.Build();

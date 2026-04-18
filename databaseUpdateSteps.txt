@@ -1,0 +1,13 @@
+# 1. Make your C# model change (in VS Code)
+
+# 2. Create migration
+cd .\Ride360API\Ride360API
+dotnet ef migrations add DescribeYourChange
+
+# 3. Apply to local
+dotnet ef database update
+
+# 4. Test your app locally - make sure it works!
+
+# 5. Apply to prod
+dotnet ef database update --connection "Server=mujahidul46.database.windows.net;Database=rides-db;User Id=YOUR_USER;Password=YOUR_PASSWORD;Encrypt=True;TrustServerCertificate=False;"

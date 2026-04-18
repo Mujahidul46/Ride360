@@ -1,110 +1,73 @@
-using ExpenseTrackerAPI.Data;
+using Ride360API.Data;
 using Microsoft.AspNetCore.Mvc;
-using ExpenseTrackerAPI.Models;
-using ExpenseTrackerAPI.Dtos;
-using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Ride360API.Dtos;
+using Ride360API.Models;
 
 namespace ExpenseTrackerAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     [Authorize]
-    public class ExpensesController : ControllerBase
+    public class RidesController : ControllerBase
     {
-        public readonly ExpenseTrackerContext _dbContext;
+        public readonly Ride360Context _dbContext;
         private readonly IMapper _mapper;
 
 
-        public ExpensesController(ExpenseTrackerContext dbContext, IMapper mapper)
+        public RidesController(Ride360Context dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
 
-        //GET /api/expenses/users/1?date=2026-03-05
-        // Modify this to include the date
+        //GET /api/rides/users/1?date=2026-03-05
         [HttpGet("users/{userId}")]
-        public ActionResult<List<ExpenseDto>> GetExpenses(int userId, [FromQuery] DateTime? date = null)
+        public ActionResult<List<RideDto>> GetRides(int userId, [FromQuery] DateTime? date = null)
         {
             var filterDate = (date ?? DateTime.Today).Date; // Extract just the date part
 
             // add validation for userId
-            var expenses = _dbContext.Expenses
-                .Include(expenses => expenses.Category) // if not included, the join doesnt happen and Category is null.
-                .Where(expenses => expenses.UserId == userId)
-                .Where(expenses => expenses.CreatedAt.Date == filterDate)
+            var rides = _dbContext.Rides
+                .Where(rides => rides.UserId == userId)
+                .Where(rides => rides.CreatedAt.Date == filterDate)
                 .ToList();
 
-            var expenseDtos = _mapper.Map<List<ExpenseDto>>(expenses);
+            var rideDtos = _mapper.Map<List<RideDto>>(rides);
 
-            return Ok(expenseDtos);
+            return Ok(rideDtos);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ExpenseDto> GetExpenseById(int id)
+        public ActionResult<RideDto> GetRideById(int id)
         {
-            var expense = _dbContext.Expenses.Find(id);
-            if (expense == null)
+            var ride = _dbContext.Rides.Find(id);
+            if (ride == null)
             {
                 return NotFound();
             }
-            var expenseDto = _mapper.Map<ExpenseDto>(expense);
-            return expenseDto;
+            var rideDto = _mapper.Map<RideDto>(ride);
+            return rideDto;
         }
 
         [HttpPost]
-        public ActionResult<ExpenseDto> CreateExpense(CreateExpenseDto expense)
+        public ActionResult<RideDto> CreateRide(CreateRideDto ride)
         {
-            var newExpense = new Expense
+            var newRide = new Ride
             {
-                Name = expense.Name,
-                Amount = expense.Amount ?? 0m,
-                CategoryId = expense.CategoryId,
-                UserId = expense.UserId
+                Name = ride.Name,
+                UserId = ride.UserId
             };
             
-            _dbContext.Expenses.Add(newExpense);
+            _dbContext.Rides.Add(newRide);
             _dbContext.SaveChanges();
 
-            _dbContext.Entry(newExpense).Reference(e => e.Category).Load();
+            var rideDto = _mapper.Map<RideDto>(newRide);
 
-            var expenseDto = _mapper.Map<ExpenseDto>(newExpense);
-
-            return CreatedAtAction(nameof(GetExpenseById), // Tells ASP.NET to use the GetExpenseById method to generate the URL
-                new { id = expenseDto.Id }, // Supplies the new expense's Id to GetExpenseById method
-                expenseDto); // The newly created expense object's data so we can see it in the response body
-        }
-
-        [HttpPut("{id}")]
-        public ActionResult<ExpenseDto> UpdateExpense(int id, UpdateExpenseDto updateDto)
-        {
-            var expense = _dbContext.Expenses.Find(id);
-            if (expense == null)
-            {
-                return NotFound();
-            }
-            if(updateDto.Name == null && updateDto.Amount == null && updateDto.CategoryId == null) {
-                return BadRequest("No fields to update.");
-            }
-            if (updateDto.Name != null) {
-                expense.Name = updateDto.Name;
-            }
-            if (updateDto.Amount != null) {
-                expense.Amount = updateDto.Amount.Value;
-            }
-            if (updateDto.CategoryId != null) {
-                expense.CategoryId = updateDto.CategoryId.Value;
-            }
-            expense.UpdatedAt = DateTime.UtcNow;
-            _dbContext.SaveChanges();
-
-            _dbContext.Entry(expense).Reference(e => e.Category).Load();
-
-            var expenseDto = _mapper.Map<ExpenseDto>(expense);
-
-            return Ok(expenseDto);
+            return CreatedAtAction(nameof(GetRideById), // Tells ASP.NET to use the GetExpenseById method to generate the URL
+                new { id = rideDto.Id }, // Supplies the new expense's Id to GetExpenseById method
+                rideDto); // The newly created expense object's data so we can see it in the response body
         }
 
 

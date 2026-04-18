@@ -1,4 +1,4 @@
-namespace ExpenseTrackerAPI.Models
+namespace Ride360API.Models
 {
     public class User
     {
@@ -7,7 +7,6 @@ namespace ExpenseTrackerAPI.Models
         public string PasswordHash { get; set; }
         public string Email { get; set; }
         public DateOnly DateOfBirth { get; set; }
-        public List<Expense> Expenses { get; set; }
         public bool IsAdmin { get; set; }
     }
 }
