@@ -23,11 +23,11 @@ namespace Ride360API.Data
             // Populate CreatedAt and UpdatedAt with current datetime
             modelBuilder.Entity<Ride>()
                 .Property(r => r.CreatedAt)
-                .HasDefaultValueSql("GETUTCDATE()");
+                .HasDefaultValueSql("NOW()");
 
             modelBuilder.Entity<Ride>()
                 .Property(r=> r.UpdatedAt)
-                .HasDefaultValueSql("GETUTCDATE()");
+                .HasDefaultValueSql("NOW()");
             
         }
     }

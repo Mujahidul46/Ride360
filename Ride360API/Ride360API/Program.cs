@@ -111,7 +111,7 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 builder.Services.AddDbContext<Ride360Context>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ExpenseDb")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ExpenseDb")));
 
 var app = builder.Build();
 
