@@ -1,7 +1,12 @@
 📝 Note:
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
-🚀 Work on next: 
+🚀 Work on NEXT: 
+Make Ride360 a MVP so it can start being used by me and brother. Need to be able to save rides, and display rides.
+
+
+
+🚀 Work on: 
 - secure endpoints by making sure users cant access other user's ids, add a check which looks at the userId of the JWT token passed to the endpoint. If the rideId the user is trying to access is not one of their own rideIds, then block them.
 - Research how GPS monitoring will work
 - Need start ride & stop ride button
