@@ -7,9 +7,6 @@
     @else if(!isRiding && elapsedSeconds === 0) {
         <p>Click 'Start Ride' to begin: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
     }
-    @else {
-        <p>Ride complete! You rode for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
-    }
 </div>
 
 <!-- Save ride modal -->
@@ -19,10 +16,10 @@
             <h2>Save Ride!</h2>
             <label class="ride-completion-summary">Ride complete! You rode for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</label>
             <label>Ride name*</label>
-            <input type="text">
+            <input type="text" #rideNameInput>
             <label>Description</label>
-            <input type="text">
-            <button class="save-button">Save</button>
+            <input type="text" #rideDescriptionInput>
+            <button class="save-button" (click)="createRide(rideNameInput.value, rideDescriptionInput.value)">Save</button>
         </div>
     </div>
 }

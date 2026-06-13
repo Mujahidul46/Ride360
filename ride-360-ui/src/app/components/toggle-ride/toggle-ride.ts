@@ -1,13 +1,15 @@
-import { DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { RidesService } from '../../services/rides.service';
+import { AuthService } from '../../services/auth.service';
+import { Ride } from '../../interfaces/Ride';
 
 @Component({
-  selector: 'app-start-stop-ride',
+  selector: 'app-toggle-ride',
   imports: [],
-  templateUrl: './start-stop-ride.html',
-  styleUrl: './start-stop-ride.scss',
+  templateUrl: './toggle-ride.html',
+  styleUrl: './toggle-ride.scss',
 })
-export class StartStopRide {
+export class ToggleRide {
   isRiding: boolean = false;
   elapsedSeconds: number = 0;
   seconds: number = 0;
@@ -16,6 +18,7 @@ export class StartStopRide {
   timerInterval: any = null;
   currentGreeting: string = '';
   isDisplayingRideStartGreeting: boolean = false;
+  showSaveRideModal: boolean = false;
   rideStartGreetings: string[] = [
     'Have a great ride!',
     'Enjoy the journey!',
@@ -25,7 +28,11 @@ export class StartStopRide {
     'Adventure awaits!',
     'Ride your own ride 😎'
   ];
-  showSaveRideModal: boolean = false;
+
+  constructor(
+    private ridesService: RidesService,
+    private authService: AuthService,
+  ) {}
 
   toggleRideStatus() {
     if (!this.isRiding) {
@@ -85,6 +92,24 @@ export class StartStopRide {
       this.currentGreeting = this.rideStartGreetings[randomIndex];
      }
      return this.currentGreeting;
-    
+  }
+
+  createRide(rideName: string, rideDescription: string) {
+    const ride: Ride = {
+      name: rideName,
+      description: rideDescription,
+      userId: this.authService.getCurrentUserId(),
+    }
+
+    this.ridesService.createRide(ride)
+      .subscribe({
+        next: createdRide => {
+          console.log('Ride created: ' + createdRide);
+          this.showSaveRideModal = false;
+        },
+        error: err => {
+          console.error('Create ride failed: ' + err)
+        }
+      });
   }
 }

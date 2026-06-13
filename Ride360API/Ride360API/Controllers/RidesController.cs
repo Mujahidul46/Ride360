@@ -57,6 +57,7 @@ namespace ExpenseTrackerAPI.Controllers
             var newRide = new Ride
             {
                 Name = ride.Name,
+                Description = ride.Description,
                 UserId = ride.UserId
             };
             

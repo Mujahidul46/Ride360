@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { Expense } from '../../interfaces/Expense';
-import { ExpenseService } from '../../services/expenses.service';
+import { Expense } from '../../interfaces/Ride';
+import { ExpenseService } from '../../services/rides.service';
 import { ConfirmationModalComponent } from '../../shared/confirmation-modal/confirmation-modal.component';
 import { NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { ToastService } from '../../services/toast-service';

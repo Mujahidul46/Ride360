@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
 import { Stats } from '../stats/stats';
-import { UserDashboardComponent } from '../user-dashboard/user-dashboard';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-bottom-nav',
-  imports: [RouterLink, Stats, UserDashboardComponent],
+  imports: [RouterLink, Stats],
   templateUrl: './bottom-nav.html',
   styleUrl: './bottom-nav.scss',
 })
