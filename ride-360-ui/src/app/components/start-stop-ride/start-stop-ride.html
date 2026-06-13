@@ -11,3 +11,18 @@
         <p>Ride complete! You rode for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
     }
 </div>
+
+<!-- Save ride modal -->
+@if (showSaveRideModal) {
+    <div class="save-ride-modal">
+        <div class="modal-content">
+            <h2>Save Ride!</h2>
+            <label class="ride-completion-summary">Ride complete! You rode for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</label>
+            <label>Ride name*</label>
+            <input type="text">
+            <label>Description</label>
+            <input type="text">
+            <button class="save-button">Save</button>
+        </div>
+    </div>
+}

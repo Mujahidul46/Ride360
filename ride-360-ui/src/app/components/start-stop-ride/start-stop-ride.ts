@@ -25,14 +25,17 @@ export class StartStopRide {
     'Adventure awaits!',
     'Ride your own ride 😎'
   ];
+  showSaveRideModal: boolean = false;
 
   toggleRideStatus() {
     if (!this.isRiding) {
       this.startStopwatch();
+      this.showSaveRideModal = false;
     }
     else {
       this.stopStopwatch();
       this.isDisplayingRideStartGreeting = false;
+      this.showSaveRideModal = true;
     }
     this.isRiding = !this.isRiding;
   }
