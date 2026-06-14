@@ -2,7 +2,8 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
-Make Ride360 a MVP so it can start being used by me and brother. Need to be able to save rides, and display rides.
+- reuse expense card logic 
+- add calendar for rides view, with text at bottom saying user can click on day to view rides
 
 
 
