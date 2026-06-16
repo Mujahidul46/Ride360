@@ -4,7 +4,7 @@ Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 🚀 Work on NEXT: 
 - reuse expense card logic 
 - add calendar for rides view, with text at bottom saying user can click on day to view rides
-
+- add "Reminders" section: track deadlines for insurance , mot, servicing, helmet, chain clean, etc 
 
 
 🚀 Work on: 
