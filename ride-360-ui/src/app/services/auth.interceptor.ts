@@ -7,6 +7,7 @@ export const authInterceptor: HttpInterceptorFn = (request, next) => {
     const authService = inject(AuthService);
     const token = authService.getToken();
 
+    // if the user has been logged in for {{ExpiryInMinutes}}, then log them out
     if (token && authService.isTokenExpired(token)) {
         authService.logOut();
         return throwError(() => new Error('Token expired - please login again'));
