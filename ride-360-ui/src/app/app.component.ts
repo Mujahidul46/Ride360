@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ToastsContainer } from './shared/toasts-container/toasts-container';
 import { AuthService } from './services/auth.service';
@@ -12,17 +12,23 @@ import { BottomNav } from './components/bottom-nav/bottom-nav';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   constructor (
     private authService: AuthService,
     private router: Router
-  ) {
+  ) {}
 
+  ngOnInit() {
+    // on app startup, check if token is expired. if so then immediately logout
+    const token = this.authService.getToken();
+    if (this.authService.isTokenExpired(token)) {
+      this.authService.logOut();
+    }
   }
 
   logout() {
     this.authService.logOut();
-    this.router.navigate(['/login']);
   }
 
   isAdmin(): boolean{

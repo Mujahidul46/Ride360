@@ -1,14 +1,16 @@
-import { HttpInterceptorFn, HttpResponse } from "@angular/common/http";
+import { HttpInterceptorFn } from "@angular/common/http";
+import { throwError } from "rxjs";
 import { AuthService } from "./auth.service";
-import { inject } from "@angular/core/primitives/di";
-import { Router } from "@angular/router";
-import { catchError } from "rxjs/internal/operators/catchError";
-import { tap, throwError } from "rxjs";
+import { inject } from "@angular/core";
 
 export const authInterceptor: HttpInterceptorFn = (request, next) => {
-    const token = localStorage.getItem('authToken');
     const authService = inject(AuthService);
-    const router = inject(Router);
+    const token = authService.getToken();
+
+    if (token && authService.isTokenExpired(token)) {
+        authService.logOut();
+        return throwError(() => new Error('Token expired - please login again'));
+    }
     
     if (token) {
         const clonedRequest = request.clone({
