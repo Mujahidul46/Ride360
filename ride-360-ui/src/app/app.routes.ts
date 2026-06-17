@@ -6,14 +6,15 @@ import { Rides } from './components/rides/rides';
 import { AddExpense } from './components/add-expense/add-expense';
 import { ToggleRide } from './components/toggle-ride/toggle-ride';
 import { Photos } from './components/photos/photos';
+import { AuthGuard } from './services/auth-guard.service';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, // empty path makes it so that login page is first one to load when app starts
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'add-expense', component: AddExpense },
-    { path: 'rides', component: Rides },
-    { path: 'stats', component: Stats },
-    { path: 'start-stop-ride', component: ToggleRide },
-    { path: 'photos', component: Photos },
+    { path: 'add-expense', component: AddExpense, canActivate: [AuthGuard] },
+    { path: 'rides', component: Rides, canActivate: [AuthGuard] },
+    { path: 'stats', component: Stats, canActivate: [AuthGuard] },
+    { path: 'start-stop-ride', component: ToggleRide, canActivate: [AuthGuard] },
+    { path: 'photos', component: Photos, canActivate: [AuthGuard] },
 ];
