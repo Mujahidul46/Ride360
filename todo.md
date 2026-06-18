@@ -2,7 +2,7 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
-- reuse expense card logic 
+- Add to Ride model: starttime, endtime, duration, category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route"), rating out of 10 before description
 - add calendar for rides view, with text at bottom saying user can click on day to view rides
 - add "Reminders" section: track deadlines for insurance , mot, servicing, helmet, chain clean, etc 
 - remove logout from bottom nav, and add user icon and put logout there.
@@ -15,6 +15,7 @@ Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
     // <p>users can click into a ride to see photos</p>
     // can have ride categories when saving ride, e.g. city/country/track (useful as we can show stats for this later). also
     // separate section on ride card for if you were a pillion
+- need to add to User model: profile picture, motorbike models, motorbike names, motorbike pictures
 
 🚀 Work on: 
 - secure endpoints by making sure users cant access other user's ids, add a check which looks at the userId of the JWT token passed to the endpoint. If the rideId the user is trying to access is not one of their own rideIds, then block them.
@@ -29,3 +30,4 @@ ride duration, time ride started and time ride ended, and any short breaks - may
 
 DONE:
 - Need start ride & stop ride button
+- reuse expense card logic 
