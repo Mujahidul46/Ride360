@@ -24,17 +24,20 @@ namespace ExpenseTrackerAPI.Controllers
 
         //GET /api/rides/users/1?date=2026-03-05
         [HttpGet("users/{userId}")]
-        public ActionResult<List<RideDto>> GetRides(int userId, [FromQuery] DateTime? date = null)
+        public ActionResult<List<RideDto>> GetRides(int userId, [FromQuery] DateOnly? date = null)
         {
-            var filterDate = (date ?? DateTime.Today).Date; // Extract just the date part
-
             // add validation for userId
             var rides = _dbContext.Rides
-                .Where(rides => rides.UserId == userId)
-                .Where(rides => rides.CreatedAt.Date == filterDate)
-                .ToList();
+                .Where(r => r.UserId == userId);
 
-            var rideDtos = _mapper.Map<List<RideDto>>(rides);
+            if (date.HasValue)
+            {
+                rides = rides.Where(r => DateOnly.FromDateTime(r.CreatedAt) == date);
+            }
+                
+            var rideList = rides.ToList();
+
+            var rideDtos = _mapper.Map<List<RideDto>>(rideList);
 
             return Ok(rideDtos);
         }

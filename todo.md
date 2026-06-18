@@ -5,7 +5,16 @@ Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 - reuse expense card logic 
 - add calendar for rides view, with text at bottom saying user can click on day to view rides
 - add "Reminders" section: track deadlines for insurance , mot, servicing, helmet, chain clean, etc 
-
+- remove logout from bottom nav, and add user icon and put logout there.
+- add user section where they can put bike name, add friends, and log out of account
+- potentially include total riding duration on rides screen, just like how we had total expenses
+// TO DO for rides screen:
+    // <p>Rides page</p>
+    // <p>- Cards go here</p>
+    // <p>- Calendar goes here</p>
+    // <p>users can click into a ride to see photos</p>
+    // can have ride categories when saving ride, e.g. city/country/track (useful as we can show stats for this later). also
+    // separate section on ride card for if you were a pillion
 
 🚀 Work on: 
 - secure endpoints by making sure users cant access other user's ids, add a check which looks at the userId of the JWT token passed to the endpoint. If the rideId the user is trying to access is not one of their own rideIds, then block them.

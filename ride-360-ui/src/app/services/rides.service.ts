@@ -8,16 +8,16 @@ import { baseApiUrl } from "../../environment";
 export class RidesService {
     constructor(private http: HttpClient) {}
 
-    // public getExpenses(userId: number, date?: Date): Observable<Expense[]> {
-    //     let url = `${baseApiUrl}/expenses/users/${userId}`;
+    public getRides(userId: number, date?: Date): Observable<Ride[]> {
+        let url = `${baseApiUrl}/rides/users/${userId}`;
         
-    //     if (date) {
-    //         let dateAsString = date.toISOString().split('T')[0]; // Get YYYY-MM-DD format
-    //         url += `?date=${dateAsString}`;
-    //     }
+        if (date) {
+            let dateAsString = date.toISOString().split('T')[0]; // Get YYYY-MM-DD format
+            url += `?date=${dateAsString}`;
+        }
 
-    //     return this.http.get<Expense[]>(url);
-    // }
+        return this.http.get<Ride[]>(url);
+    }
 
     // public deleteExpense(expenseId: number): Observable<void> {
     //     return this.http.delete<void>(`${baseApiUrl}/expenses/${expenseId}`);
