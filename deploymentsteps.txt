@@ -9,7 +9,7 @@
 3. Build and publish with latest code:
    dotnet publish -c Release -o ./publish
    
-   ⚠️ IMPORTANT: This step recompiles the API with your LATEST code changes
+   ⚠️ IMPORTANT: Above step is crucial as it recompiles the API with your LATEST code changes
    and outputs the DLLs to the publish folder. If you skip this, you'll
    deploy OLD/stale code!
 
