@@ -2,6 +2,7 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
+add reminders section again
 need to update dtos, interfaces, controllers, etc with new properties
 - Add to Ride model: starttime, endtime, duration, category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route"), rating out of 10 before description
 - add calendar for rides view, with text at bottom saying user can click on day to view rides
