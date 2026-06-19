@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Ride360API.Dtos;
 using Ride360API.Models;
+using System.Security.Claims;
 
 namespace ExpenseTrackerAPI.Controllers
 {
@@ -32,9 +33,9 @@ namespace ExpenseTrackerAPI.Controllers
 
             if (date.HasValue)
             {
-                rides = rides.Where(r => DateOnly.FromDateTime(r.StartTime) == date);
+                rides = rides.Where(r => r.StartTime.HasValue && DateOnly.FromDateTime(r.StartTime.Value) == date);
             }
-                
+                    
             var rideList = rides.ToList();
 
             var rideDtos = _mapper.Map<List<RideDto>>(rideList);
@@ -57,12 +58,32 @@ namespace ExpenseTrackerAPI.Controllers
         [HttpPost]
         public ActionResult<RideDto> CreateRide(CreateRideDto ride)
         {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out int userId))
+            {
+                return Unauthorized("User ID not found or invalid in authentication claims.");
+            }
+
+            // !!!!!Update this to calculate duration!!!!!!
             var newRide = new Ride
             {
                 Name = ride.Name,
+                CategoryId = ride.CategoryId,
+                Rating = ride.Rating,
                 Description = ride.Description,
-                UserId = ride.UserId
+                StartTime = ride.StartTime,
+                EndTime = ride.EndTime,
+                UserId = userId
             };
+
+            if (newRide.StartTime.HasValue)
+            {
+                newRide.Duration = ride.EndTime - ride.StartTime;
+            }
+            else
+            {
+                newRide.Duration = null;
+            }
             
             _dbContext.Rides.Add(newRide);
             _dbContext.SaveChanges();

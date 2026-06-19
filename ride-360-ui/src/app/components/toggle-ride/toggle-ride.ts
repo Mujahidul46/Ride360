@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RidesService } from '../../services/rides.service';
 import { AuthService } from '../../services/auth.service';
 import { Ride } from '../../interfaces/Ride';
+import { CreateRideDto } from '../../interfaces/CreateRideDto';
 
 @Component({
   selector: 'app-toggle-ride',
@@ -19,6 +20,7 @@ export class ToggleRide {
   currentGreeting: string = '';
   isDisplayingRideStartGreeting: boolean = false;
   showSaveRideModal: boolean = false;
+  startTime: string = '';
   rideStartGreetings: string[] = [
     'Have a great ride!',
     'Enjoy the journey!',
@@ -38,6 +40,7 @@ export class ToggleRide {
     if (!this.isRiding) {
       this.startStopwatch();
       this.showSaveRideModal = false;
+      this.startTime = new Date().toISOString()
     }
     else {
       this.stopStopwatch();
@@ -94,11 +97,14 @@ export class ToggleRide {
      return this.currentGreeting;
   }
 
-  createRide(rideName: string, rideDescription: string) {
-    const ride: Ride = {
+  createRide(rideName: string, rideDescription: string, rating: number, categoryId: number,) {
+    const ride: CreateRideDto = {
       name: rideName,
       description: rideDescription,
-      userId: this.authService.getCurrentUserId(),
+      rating: rating,
+      categoryId: categoryId,
+      startTime: this.startTime,
+      endTime: new Date().toISOString(),
     }
 
     this.ridesService.createRide(ride)
@@ -106,6 +112,9 @@ export class ToggleRide {
         next: createdRide => {
           console.log('Ride created: ' + createdRide);
           this.showSaveRideModal = false;
+          this.startTime = '';
+          this.elapsedSeconds = 0;
+          this.formatTime();
         },
         error: err => {
           console.error('Create ride failed: ' + err)

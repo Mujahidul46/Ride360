@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { Ride } from "../interfaces/Ride";
 import { Injectable } from "@angular/core";
 import { baseApiUrl } from "../../environment";
+import { CreateRideDto } from "../interfaces/CreateRideDto";
 
 @Injectable({providedIn: 'root'})
 export class RidesService {
@@ -31,7 +32,7 @@ export class RidesService {
     //     return this.http.put<Expense>(`${baseApiUrl}/expenses/${expenseId}`, expense);
     // }
 
-    public createRide(ride: Ride): Observable<Ride> {
+    public createRide(ride: CreateRideDto): Observable<Ride> {
         return this.http.post<Ride>(`${baseApiUrl}/rides`, ride);
     }
 }

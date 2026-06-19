@@ -10,4 +10,8 @@ dotnet ef database update
 # 4. Test your app locally - make sure it works!
 
 # 5. Apply to prod
-dotnet ef database update --connection "Server=mujahidul46.database.windows.net;Database=rides-db;User Id=YOUR_USER;Password=YOUR_PASSWORD;Encrypt=True;TrustServerCertificate=False;"
+dotnet ef database update --connection "FIND CONN STRING IN NEON DB -> OVERVIEW -> CONNECT"
+change dropdown to .NET
+so this format:
+dotnet ef database update --connection "Host=ep-young-field-abklz1qw-pooler.eu-west-2.aws.neon.tech; Database=neondb; Username=neondb_owner; 
+Password=YOUR_ACTUAL_PASSWORD_HERE; SSL Mode=VerifyFull; Channel Binding=Require;"

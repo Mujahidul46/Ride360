@@ -1,4 +1,4 @@
-namespace ExpenseTrackerAPI.Dtos {
+namespace Ride360API.Dtos {
     public class UserDto
     {
         public int Id { get; set; }
