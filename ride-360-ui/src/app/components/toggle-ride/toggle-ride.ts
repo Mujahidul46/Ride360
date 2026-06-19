@@ -21,6 +21,8 @@ export class ToggleRide {
   isDisplayingRideStartGreeting: boolean = false;
   showSaveRideModal: boolean = false;
   startTime: string = '';
+  endTime: string = '';
+  selectedRating: number = -1;
   rideStartGreetings: string[] = [
     'Have a great ride!',
     'Enjoy the journey!',
@@ -46,6 +48,7 @@ export class ToggleRide {
       this.stopStopwatch();
       this.isDisplayingRideStartGreeting = false;
       this.showSaveRideModal = true;
+      this.endTime = new Date().toISOString()
     }
     this.isRiding = !this.isRiding;
   }
@@ -97,14 +100,22 @@ export class ToggleRide {
      return this.currentGreeting;
   }
 
-  createRide(rideName: string, rideDescription: string, rating: number, categoryId: number,) {
+  setRating(value: number): void {
+    this.selectedRating = value;
+  }
+
+  isRatingSelected(value: number): boolean {
+    return value <= this.selectedRating;
+  }
+
+  createRide(rideName: string, rideDescription?: string, categoryId?: number,) {
     const ride: CreateRideDto = {
       name: rideName,
       description: rideDescription,
-      rating: rating,
-      categoryId: categoryId,
+      rating: this.selectedRating,
+      //categoryId: categoryId,
       startTime: this.startTime,
-      endTime: new Date().toISOString(),
+      endTime: this.endTime,
     }
 
     this.ridesService.createRide(ride)
@@ -113,7 +124,9 @@ export class ToggleRide {
           console.log('Ride created: ' + createdRide);
           this.showSaveRideModal = false;
           this.startTime = '';
+          this.endTime = '';
           this.elapsedSeconds = 0;
+          this.selectedRating = -1;
           this.formatTime();
         },
         error: err => {

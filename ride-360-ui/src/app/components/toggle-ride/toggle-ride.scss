@@ -83,5 +83,30 @@
             border-radius: 25px;
             cursor: pointer;
         }
+
+        .rating-circles-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px; // Space between circles
+            margin-bottom: 10px; // Space below rating
+        }
+
+        .rating-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #ccc; // Default border
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease; // Smooth transitions
+
+            &:hover {
+                border-color: #888; // Darken border on hover
+            }
+
+            &.selected {
+                background-color: #f1c40f; // Yellow for selected
+                border-color: #f1c40f;
+            }
+        }
     }
 }

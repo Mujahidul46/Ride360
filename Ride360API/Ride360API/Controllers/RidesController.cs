@@ -64,7 +64,6 @@ namespace ExpenseTrackerAPI.Controllers
                 return Unauthorized("User ID not found or invalid in authentication claims.");
             }
 
-            // !!!!!Update this to calculate duration!!!!!!
             var newRide = new Ride
             {
                 Name = ride.Name,

@@ -1,5 +1,7 @@
 ﻿namespace Ride360API.Models
-// category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route"),
+// category (e.g., "Commute", "Enjoyment", "Delivery", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route"),
+// a single ride can have multiple categories. e.g. commute + fun
+
 {
     public class Category
     {

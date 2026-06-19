@@ -11,7 +11,7 @@ namespace Ride360API.Dtos
         [StringLength(maximumLength: 200, ErrorMessage = "Ride description must be less than 200 characters.")]
         public string? Description { get; set; }
 
-        [Range(0, 10)]
+        [Range(0, 5)]
         public int? Rating { get; set; }
 
         public int? CategoryId { get; set; }

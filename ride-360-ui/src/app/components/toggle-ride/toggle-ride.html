@@ -14,11 +14,27 @@
     <div class="save-ride-modal">
         <div class="modal-content">
             <h2>Save Ride!</h2>
+            <!--Slight concern that frontend and backend both calculate durations, they should hopefully match.-->
             <label class="ride-completion-summary">Ride complete! You rode for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</label>
+            
+            <!--Would be nice if ride name was auto-populated to Ride on Thurs 18th Evening for example. User can override to custom name-->
             <label>Ride name*</label>
             <input type="text" #rideNameInput>
+
+            <label>Rating</label>
+            <div class="rating-circles-container">
+                @for (i of [1, 2, 3, 4, 5]; track i) {
+                    <span
+                        class="rating-circle"
+                        [class.selected]="isRatingSelected(i)"
+                        (click)="setRating(i)">
+                    </span>
+                }
+            </div>
+
             <label>Description</label>
             <input type="text" #rideDescriptionInput>
+
             <button class="save-button" (click)="createRide(rideNameInput.value, rideDescriptionInput.value)">Save</button>
         </div>
     </div>
