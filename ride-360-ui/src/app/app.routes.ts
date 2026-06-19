@@ -5,8 +5,8 @@ import { Stats } from './components/stats/stats';
 import { Rides } from './components/rides/rides';
 import { AddExpense } from './components/add-expense/add-expense';
 import { ToggleRide } from './components/toggle-ride/toggle-ride';
-import { Reminders } from './components/reminders/reminders';
 import { AuthGuard } from './services/auth-guard.service';
+import { Reminders } from './components/reminders/reminders';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, // empty path makes it so that login page is first one to load when app starts
