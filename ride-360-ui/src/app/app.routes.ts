@@ -5,7 +5,7 @@ import { Stats } from './components/stats/stats';
 import { Rides } from './components/rides/rides';
 import { AddExpense } from './components/add-expense/add-expense';
 import { ToggleRide } from './components/toggle-ride/toggle-ride';
-import { Reminders } from './components/Reminders/reminders';
+import { Reminders } from './components/reminders/reminders';
 import { AuthGuard } from './services/auth-guard.service';
 
 export const routes: Routes = [
