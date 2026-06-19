@@ -5,7 +5,7 @@ import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-bottom-nav',
-  imports: [RouterLink, Stats],
+  imports: [RouterLink],
   templateUrl: './bottom-nav.html',
   styleUrl: './bottom-nav.scss',
 })

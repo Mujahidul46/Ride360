@@ -1,0 +1,7 @@
+dotnet ef migrations add InitialCreate
+
+dotnet ef database update
+
+or for prod:
+
+dotnet ef database update --connection "CONN STRING"

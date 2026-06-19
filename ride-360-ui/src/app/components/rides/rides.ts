@@ -1,14 +1,13 @@
 // Rebuild trigger: March 14 2026
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { DatePipe, DecimalPipe } from '@angular/common';
-import { AddExpense } from '../add-expense/add-expense';
+import { DatePipe } from '@angular/common';
 import { Ride } from '../../interfaces/Ride';
 import { RidesService } from '../../services/rides.service';
 
 @Component({
   selector: 'app-rides',
-  imports: [DecimalPipe, DatePipe, AddExpense],
+  imports: [DatePipe],
   templateUrl: './rides.html',
   styleUrl: './rides.scss',
 })

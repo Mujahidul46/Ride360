@@ -19,16 +19,12 @@ namespace Ride360API.Data
             // Tell entity framework to use schema
             modelBuilder.Entity<Ride>().ToTable("Rides", ridesSchema); // Maps Ride entity to rd.Rides in database
             modelBuilder.Entity<User>().ToTable("Users", ridesSchema); // Maps User entity to rd.Users in database
+            modelBuilder.Entity<Category>().ToTable("Categories", ridesSchema);
 
-            // Populate CreatedAt and UpdatedAt with current datetime
+            // Populate CreatedAt with current datetime
             modelBuilder.Entity<Ride>()
-                .Property(r => r.CreatedAt)
+                .Property(r => r.StartTime)
                 .HasDefaultValueSql("NOW()");
-
-            modelBuilder.Entity<Ride>()
-                .Property(r=> r.UpdatedAt)
-                .HasDefaultValueSql("NOW()");
-            
         }
     }
 }

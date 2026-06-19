@@ -2,7 +2,6 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
-NEXT THING : run app and fix errors in ride360context and ridecontroller, these were introduced because u changed ride model
 NEXT THING TO DO IS DELETE ALL MIGRATIONS AND RUN INITIAL MIGRATION.
 - Add to Ride model: starttime, endtime, duration, category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route"), rating out of 10 before description
 - add calendar for rides view, with text at bottom saying user can click on day to view rides

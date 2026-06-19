@@ -32,7 +32,7 @@ namespace ExpenseTrackerAPI.Controllers
 
             if (date.HasValue)
             {
-                rides = rides.Where(r => DateOnly.FromDateTime(r.CreatedAt) == date);
+                rides = rides.Where(r => DateOnly.FromDateTime(r.StartTime) == date);
             }
                 
             var rideList = rides.ToList();
