@@ -2,13 +2,9 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
-- T feedback : edit and delete rides (name / description / rating), have a map for replaying your ride, be able to click cancel on save ride, remove start stop ride text and centre button and get ai to style, also fix formatting of cards and get ai to style
-- social media section
-add reminders section again
-need to update dtos, interfaces, controllers, etc with new properties
-- Add to Ride model: starttime, endtime, duration, category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route"), rating out of 10 before description
+- T feedback : edit and delete rides (name / description / rating), have a map for replaying your ride
+- Add to Ride model category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route")
 - add calendar for rides view, with text at bottom saying user can click on day to view rides
-- add "Reminders" section: track deadlines for insurance , mot, servicing, helmet, chain clean, etc 
 - remove logout from bottom nav, and add user icon and put logout there.
 - add user section where they can put bike name, add friends, and log out of account
 - potentially include total riding duration on rides screen, just like how we had total expenses
@@ -16,7 +12,7 @@ need to update dtos, interfaces, controllers, etc with new properties
     // <p>Rides page</p>
     // <p>- Cards go here</p>
     // <p>- Calendar goes here</p>
-    // <p>users can click into a ride to see photos</p>
+    // <p>users can click into a ride to see photos and stats</p>
     // can have ride categories when saving ride, e.g. city/country/track (useful as we can show stats for this later). also
     // separate section on ride card for if you were a pillion
 - need to add to User model: profile picture, motorbike models, motorbike names, motorbike pictures
@@ -45,3 +41,6 @@ rider wrapped - end of year recap
 DONE:
 - Need start ride & stop ride button
 - reuse expense card logic 
+- be able to click cancel on save ride
+- remove start stop ride text and centre button and get ai to style
+- also fix formatting of cards and get ai to style

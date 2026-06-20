@@ -134,4 +134,8 @@ export class ToggleRide {
         }
       });
   }
+
+  closeSaveRideModal() {
+    this.showSaveRideModal = false;
+  }
 }
