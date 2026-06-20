@@ -114,7 +114,7 @@ export class Rides {
       return formattedComponents.join(" ");
     }
 
-    //2026-06-20T17:54:27.45Z -> 17:54:27
+    //2026-06-20T17:54:27.45Z -> 17:54
     formatTime(time: string | undefined): string {
       if (!time) {
         console.warn(`Time is undefined or empty - cannot format.`);
@@ -122,9 +122,11 @@ export class Rides {
       }
 
       const timePart = time?.split("T")[1];
-        const hoursMinutesSecondsPart = timePart.split(".")[0];
+      const hoursMinutesSecondsPart = timePart.split(".")[0];
+      const hoursPart = hoursMinutesSecondsPart.split(":")[0];
+      const minutesPart = hoursMinutesSecondsPart.split(":")[1];
       
-      return `${hoursMinutesSecondsPart}`;
+      return `${hoursPart}:${minutesPart}`;
       
     }
 }
