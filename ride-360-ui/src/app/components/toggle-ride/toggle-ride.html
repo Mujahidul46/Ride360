@@ -4,9 +4,6 @@
     @if(isRiding) {
         <p>Riding for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
     }
-    @else if(!isRiding && elapsedSeconds === 0) {
-        <p>Click 'Start Ride' to begin: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
-    }
 </div>
 
 <!-- Save ride modal -->
