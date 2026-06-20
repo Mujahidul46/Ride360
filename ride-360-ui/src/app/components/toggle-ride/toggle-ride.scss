@@ -1,112 +1,222 @@
+/* General Body Styling (assuming this is applied globally or to a parent) */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+}
 
 .button-container {
     display: flex;
+    flex-direction: column; /* Stack elements vertically */
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Use min-height to ensure it takes full viewport height */
+    gap: 20px; /* Space between elements */
+    padding: 20px; /* Add some padding */
 
     .start-stop-ride-btn {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: green;
+        background: linear-gradient(135deg, #4CAF50 0%, #2E8B57 100%); /* Green gradient */
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        border: none;
         border-radius: 50%;
-        height: 100px;
-        width: 100px;
+        height: 150px; /* Increased size */
+        width: 150px; /* Increased size */
+        cursor: pointer;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Softer shadow */
+        transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */
+        outline: none; /* Remove outline on focus */
+
+        &:hover {
+            transform: translateY(-3px); /* Lift effect on hover */
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        &:active {
+            transform: translateY(1px); /* Press effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
     }
 
     .start-stop-ride-btn.active {
-        background-color: red;
+        background: linear-gradient(135deg, #FF6347 0%, #DC143C 100%); /* Red gradient for active */
+    }
+
+    .ride-greeting, .ride-timer {
+        font-size: 1.2rem;
+        color: #555;
+        margin: 0;
+        text-align: center;
+    }
+
+    .ride-timer {
+        font-weight: bold;
+        color: #007bff; /* A nice blue for the timer */
     }
 }
 
-
-// when isRiding is true, the button should be green and say "Stop Ride"
-
+/* Save ride modal */
 .save-ride-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.75); /* Darker overlay, no blur */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+
+    /* Smooth fade-in animation for the modal overlay */
+    animation: fadeIn 0.3s ease-out forwards;
 
     .modal-content {
         background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 40px; /* Increased padding */
+        border-radius: 15px; /* More rounded corners */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow */
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        min-width: 300px;
+        gap: 15px; /* Increased gap */
+        min-width: 350px; /* Slightly wider modal */
+        max-width: 90%; /* Ensure it doesn't get too wide on large screens */
+        position: relative; /* For animation */
+
+        /* Smooth scale-up and fade-in animation for the content */
+        animation: scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; /* Bounce effect */
+        opacity: 0; /* Start hidden for animation */
+
 
         h2 {
             text-align: center;
-            margin: 0 0 10px 0;
+            margin: 0 0 20px 0; /* More space below title */
+            color: #2c3e50; /* Darker title color */
+            font-size: 1.8rem;
+            font-weight: 700;
         }
 
         label {
             font-weight: 600;
-            color: #333;
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 5px; /* Space between label and input */
         }
 
         .ride-completion-summary {
             background: linear-gradient(135deg, #00f777 0%, #2b9804 100%);
-            color: #333;
-            padding: 15px;
-            border-radius: 8px;
+            color: #fff; /* White text for better contrast */
+            padding: 18px; /* More padding */
+            border-radius: 10px; /* Slightly more rounded */
             text-align: center;
-            font-size: 18px;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+            margin-bottom: 20px; /* More space below summary */
+            box-shadow: 0 4px 15px rgba(43, 152, 4, 0.4); /* Shadow matching gradient */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
         }
 
-        input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+        input[type="text"],
+        textarea {
+            padding: 12px; /* More padding */
+            border: 1px solid #ccc;
+            border-radius: 8px; /* More rounded inputs */
+            font-size: 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            resize: vertical; /* Allow vertical resizing for textarea */
+            min-height: 40px; /* Minimum height for textarea */
+
+            &:focus {
+                border-color: #007bff; /* Blue border on focus */
+                box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle focus ring */
+                outline: none;
+            }
+
+            &::placeholder {
+                color: #999;
+            }
+        }
+
+        textarea {
+            min-height: 80px; /* Taller textarea */
         }
 
         .save-button {
-            background-color: #19ba67;
-            color: #000000;
+            background: linear-gradient(135deg, #19ba67 0%, #0f8a4b 100%); /* Green gradient */
+            color: white; /* White text */
             font-weight: bold;
-            padding: 10px;
+            padding: 15px; /* More padding */
             border: none;
-            border-radius: 25px;
+            border-radius: 30px; /* More rounded pill shape */
             cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 20px; /* More space above button */
+            box-shadow: 0 5px 15px rgba(25, 186, 103, 0.4); /* Shadow matching gradient */
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            outline: none;
+
+            &:hover {
+                background: linear-gradient(135deg, #0f8a4b 0%, #19ba67 100%); /* Slightly darker on hover */
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(25, 186, 103, 0.5);
+            }
+
+            &:active {
+                transform: translateY(1px);
+                box-shadow: 0 3px 10px rgba(25, 186, 103, 0.3);
+            }
         }
 
         .rating-circles-container {
             display: flex;
             justify-content: center;
-            gap: 8px; // Space between circles
-            margin-bottom: 10px; // Space below rating
+            gap: 10px; /* Increased space between circles */
+            margin-bottom: 15px; /* More space below rating */
         }
 
         .rating-circle {
-            width: 30px;
-            height: 30px;
+            width: 35px; /* Larger circles */
+            height: 35px;
             border-radius: 50%;
-            border: 2px solid #ccc; // Default border
+            border: 2px solid #ddd; /* Lighter default border */
             cursor: pointer;
-            transition: background-color 0.2s ease, border-color 0.2s ease; // Smooth transitions
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+            background-color: #f0f0f0; /* Light grey fill */
 
             &:hover {
-                border-color: #888; // Darken border on hover
+                border-color: #a0a0a0; /* Darken border on hover */
+                transform: scale(1.1); /* Slight scale on hover */
             }
 
             &.selected {
-                background-color: #f1c40f; // Yellow for selected
-                border-color: #f1c40f;
+                background-color: #FFD700; /* Gold for selected */
+                border-color: #FFD700;
+                box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.4); /* Glow effect */
+                transform: scale(1.15); /* Slightly larger when selected */
             }
         }
+    }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
     }
 }

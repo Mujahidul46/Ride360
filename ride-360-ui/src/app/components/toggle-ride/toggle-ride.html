@@ -1,8 +1,8 @@
 <div class="button-container">
     <button class="start-stop-ride-btn" [class.active]="isRiding" (click)="toggleRideStatus()">{{ isRiding ? 'Stop Ride' : 'Start Ride'}}</button>
-    <p>{{ isRiding && elapsedSeconds < 5 ? selectRandomRideStartGreeting() : ''}}</p>
+    <p class="ride-greeting" *ngIf="isRiding && elapsedSeconds < 5">{{ selectRandomRideStartGreeting() }}</p>
     @if(isRiding) {
-        <p>Riding for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
+        <p class="ride-timer">Riding for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
     }
 </div>
 
@@ -10,14 +10,12 @@
 @if (showSaveRideModal) {
     <div class="save-ride-modal">
         <div class="modal-content">
-            <h2>Save Ride!</h2>
+            <h2>Save Your Ride!</h2>
             <!--Slight concern that frontend and backend both calculate durations, they should hopefully match.-->
             <label class="ride-completion-summary">Ride complete! You rode for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</label>
-            
             <!--Would be nice if ride name was auto-populated to Ride on Thurs 18th Evening for example. User can override to custom name-->
-            <label>Ride name*</label>
-            <input type="text" #rideNameInput>
-
+            <label for="rideNameInput">Ride Name*</label>
+            <input type="text" id="rideNameInput" #rideNameInput>
             <label>Rating</label>
             <div class="rating-circles-container">
                 @for (i of [1, 2, 3, 4, 5]; track i) {
@@ -28,11 +26,9 @@
                     </span>
                 }
             </div>
-
-            <label>Description</label>
-            <input type="text" #rideDescriptionInput>
-
-            <button class="save-button" (click)="createRide(rideNameInput.value, rideDescriptionInput.value)">Save</button>
+            <label for="rideDescriptionInput">Description</label>
+            <textarea id="rideDescriptionInput" #rideDescriptionInput></textarea>
+            <button class="save-button" (click)="createRide(rideNameInput.value, rideDescriptionInput.value)">Save Ride</button>
         </div>
     </div>
 }
