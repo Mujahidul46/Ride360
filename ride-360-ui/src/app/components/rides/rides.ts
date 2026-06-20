@@ -114,4 +114,17 @@ export class Rides {
       return formattedComponents.join(" ");
     }
 
+    //2026-06-20T17:54:27.45Z -> 17:54:27
+    formatTime(time: string | undefined): string {
+      if (!time) {
+        console.warn(`Time is undefined or empty - cannot format.`);
+        return "";
+      }
+
+      const timePart = time?.split("T")[1];
+        const hoursMinutesSecondsPart = timePart.split(".")[0];
+      
+      return `${hoursMinutesSecondsPart}`;
+      
+    }
 }
