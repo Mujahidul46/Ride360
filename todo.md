@@ -2,6 +2,8 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
+- T feedback : edit and delete rides (name / description / rating), have a map for replaying your ride, be able to click cancel on save ride, remove start stop ride text and centre button and get ai to style, also fix formatting of cards and get ai to style
+- social media section
 add reminders section again
 need to update dtos, interfaces, controllers, etc with new properties
 - Add to Ride model: starttime, endtime, duration, category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route"), rating out of 10 before description
