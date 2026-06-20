@@ -2,6 +2,8 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
+- T feedback : edit and delete rides (name / description / rating), have a map for replaying your ride, be able to click cancel on save ride, remove start stop ride text and centre button and get ai to style, also fix formatting of cards and get ai to style
+- social media section
 add reminders section again
 need to update dtos, interfaces, controllers, etc with new properties
 - Add to Ride model: starttime, endtime, duration, category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route"), rating out of 10 before description
@@ -29,6 +31,16 @@ ride duration, time ride started and time ride ended, and any short breaks - may
 - Another feature idea is online sharing with other users - can create riding groups, users can create a profile with their bike name and picture, and users can get a riding style profile based on how they ride
 - Upload Photos feature
 - New feature: Slow speed motorcycle drill practice. E.g. U-Turn 0/10. Gamified with Exp to motivate users to practise.
+
+Backlog:
+rider wrapped - end of year recap
+-how many rides 
+-total distance
+-how many people you wrode with 
+-possible integration with Spotify to upload playlists???
+-new locations you visited
+-total locations
+- how many commutes 
 
 DONE:
 - Need start ride & stop ride button
