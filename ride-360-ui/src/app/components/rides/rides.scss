@@ -1,61 +1,113 @@
 .top-section {
-    .date-line {
-        display: flex;
-        margin: 20px 0px;
-        font-size: 1.25rem;
-        font-weight: bold;
-
-        .date {
-            flex: 1;
-            text-align: center;
-        }
-
-        .left-arrow, .right-arrow {
-            width: 40px;
-            text-align: center;
-        }
-
-        
+  .date-line {
+    display: flex;
+    margin: 20px 0px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    .date {
+      flex: 1;
+      text-align: center;
     }
-
-    .total {
-        color: black;
-        margin: 20px 0px;
-        text-align: center;
-        font-weight: bold;
+    .left-arrow, .right-arrow {
+      width: 40px;
+      text-align: center;
+      cursor: pointer;
+      color: #007bff; // Deloitte blue for interaction
+      &:hover {
+        color: #0056b3;
+      }
     }
+  }
+  .total {
+    color: black;
+    margin: 20px 0px;
+    text-align: center;
+    font-weight: bold;
+  }
 }
 
-.expense-card {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 20px;
-    padding: 14px 18px;
-    margin: 32px 20px 32px 20px;
+.ride-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%); // Subtle gradient background
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); // More pronounced shadow
+  padding: 20px;
+  margin: 25px 20px; // Adjusted margin
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; // Smooth transitions
 
-    .ride-details {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-    
-    .icon {
-        width: 42px;
-        height: 42px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        font-size: 20px;
-        background: #fef3c7;
-        margin-right: 14px;
-    }
+  &:hover {
+    transform: translateY(-5px); // Lift card on hover
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); // Enhanced shadow on hover
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0; // Separator for header
 
     .name {
-        font-size: 16px;
-        font-weight: 500;
-        color: #1a1a1a;
-        font-weight: bold;
+      font-size: 1.3rem; // Larger name
+      font-weight: 700; // Bolder
+      color: #2c3e50; // Darker text for prominence
     }
+
+    .rating {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #f39c12; // Star rating colour
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  .card-body {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .description {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .duration {
+      font-size: 0.9rem;
+      color: #7f8c8d; // Muted colour for duration
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px dashed #e0e0e0; // Dashed line for a timeline feel
+    font-size: 0.9rem;
+    color: #34495e; // Darker colour for times
+
+    .start-time, .end-time {
+      font-weight: 600;
+      flex-basis: 45%; // Give them space
+      text-align: center;
+    }
+
+    .timeline-separator {
+      flex-grow: 1;
+      height: 2px;
+      background: linear-gradient(to right, #007bff, #2ecc71); // Gradient line
+      border-radius: 1px;
+      margin: 0 10px; // Space around the line
+    }
+  }
 }

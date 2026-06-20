@@ -1,29 +1,33 @@
 <div class="top-section">
-    <div class="date-line"> <!-- <          DATE             > -->
-        <span class="left-arrow" (click)="getRidesForDate('previousDay')">&lt;</span>
-        <span class="date">{{ currentDate | date: 'mediumDate'}}</span>
-        <span
-            class="right-arrow" 
-            (click)="getRidesForDate('nextDay')"
-            [style.visibility] = "isToday() ? 'hidden' : 'visible'">
-            &gt;
-        </span> 
-    </div>
-    <!--<p class="total">Spent £{{ totalExpense | number: '1.2-2'}}</p>-->
+  <div class="date-line"> <!-- <          DATE             > -->
+    <span class="left-arrow" (click)="getRidesForDate('previousDay')">&lt;</span>
+    <span class="date">{{ currentDate | date: 'mediumDate'}}</span>
+    <span
+      class="right-arrow"
+      (click)="getRidesForDate('nextDay')"
+      [style.visibility] = "isToday() ? 'hidden' : 'visible'">
+      &gt;
+    </span>
+  </div>
+  <!--<p class="total">Spent £{{ totalExpense | number: '1.2-2'}}</p>-->
 </div>
-
 @for (ride of rides; track ride.id) {
-    <div class="expense-card">
-        <!-- <span class="icon">{{ ride.categoryIcon }}</span> -->
-        <div class="ride-details">
-            <span class="name">{{ ride.name }}</span>
-            @if (ride.rating) {
-                <span>{{ ride.rating }}/5</span>
-            }
-            <span>{{ ride.description }}</span>
-            <span>{{ formatDuration(ride.duration) }}</span>
-            <span>{{ formatTime(ride.startTime) }}</span>
-            <span>{{ formatTime(ride.endTime) }}</span>
-        </div>
+  <div class="ride-card">
+    <div class="card-header">
+      <!-- <span class="icon">{{ ride.categoryIcon }}</span> -->
+      <span class="name">{{ ride.name }}</span>
+      @if (ride.rating) {
+        <span class="rating">⭐ {{ ride.rating }}/5</span>
+      }
     </div>
+    <div class="card-body">
+      <p class="description">{{ ride.description }}</p>
+      <span class="duration">⏱️ {{ formatDuration(ride.duration) }}</span>
+    </div>
+    <div class="card-footer">
+      <span class="start-time">{{ formatTime(ride.startTime) }}</span>
+      <div class="timeline-separator"></div>
+      <span class="end-time">{{ formatTime(ride.endTime) }}</span>
+    </div>
+  </div>
 }
