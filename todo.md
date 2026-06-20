@@ -2,6 +2,8 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
+- Need to alter the implementation of the timer. The current issue is that when the app has been closed, or the user has turned their phone off for few minutes, the current timer pauses. This is because browsers stop client-side activity to preserve battery 
+Solution: Need to store the startRide time on the server, and when the app is closed and reopened, the app chekcs if there is an active ride, if so then the client calculates the current time (currentTime = newDate().getTime()) and does currentTime-startTime and the client displays this value
 - T feedback : edit and delete rides (name / description / rating), have a map for replaying your ride
 - Add to Ride model category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route")
 - add calendar for rides view, with text at bottom saying user can click on day to view rides
