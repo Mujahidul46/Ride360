@@ -32,6 +32,16 @@ ride duration, time ride started and time ride ended, and any short breaks - may
 - Upload Photos feature
 - New feature: Slow speed motorcycle drill practice. E.g. U-Turn 0/10. Gamified with Exp to motivate users to practise.
 
+Backlog:
+rider wrapped - end of year recap
+-how many rides 
+-total distance
+-how many people you wrode with 
+-possible integration with Spotify to upload playlists???
+-new locations you visited
+-total locations
+- how many commutes 
+
 DONE:
 - Need start ride & stop ride button
 - reuse expense card logic 
