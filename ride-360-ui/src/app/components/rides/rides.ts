@@ -64,4 +64,54 @@ export class Rides {
       return (this.currentDate.toDateString() === today.toDateString());
     }
 
+    // 02:38:12.017 -> 2 hours 38 minutes
+    // 01:01:01.117 -> 1 hour 1 minute
+    // 00:00:01.387 -> 1 second
+    formatDuration(duration: string | undefined): string {
+      if (!duration) {
+        console.warn("Duration is undefined or empty - cannot format.");
+        return "";
+      }
+
+      const hours = duration.split(":")[0];
+      const minutes = duration.split(":")[1];
+      const seconds = duration.split(":")[2];
+
+      const hoursAsNum = parseInt(hours, 10);
+      const minutesAsNum = parseInt(minutes, 10);
+      const secondsAsNum = parseInt(seconds, 10);
+
+      if (isNaN(hoursAsNum) || isNaN(minutesAsNum)) {
+        console.warn("Failed to parse minutes and/or hours. One or both was NaN");
+        return "";
+      }
+
+      const formattedComponents: string[] = [];
+
+      if (hoursAsNum === 1) {
+        formattedComponents.push(`${hoursAsNum} hour`);
+      }
+      else if (hoursAsNum > 0) {
+        formattedComponents.push(`${hoursAsNum} hours`);
+      }
+
+      if (minutesAsNum === 1) {
+        formattedComponents.push(`${minutesAsNum} minute`);
+      }
+      else if (minutesAsNum > 0) {
+        formattedComponents.push(`${minutesAsNum} minutes`);
+      }
+
+      if (hoursAsNum === 0 && minutesAsNum === 0) {
+        if (secondsAsNum === 1) {
+          formattedComponents.push(`${secondsAsNum} second`);
+        }
+        else if (secondsAsNum > 0) {
+          formattedComponents.push(`${secondsAsNum} seconds`);
+        }
+      }
+      
+      return formattedComponents.join(" ");
+    }
+
 }
