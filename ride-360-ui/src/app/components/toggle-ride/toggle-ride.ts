@@ -25,6 +25,8 @@ export class ToggleRide {
   endTime: string = '';
   selectedRating: number = -1;
   showMessageWazeAppNotInstalled: boolean = false;
+  private appLaunchTimeout: any;
+  private visibilityChangeListener: (() => void) | null = null;
   rideStartGreetings: string[] = [
     'Have a great ride!',
     'Enjoy the journey!',
@@ -146,15 +148,42 @@ export class ToggleRide {
   openWaze(): void {
     const appUrl = "waze://";
     this.showMessageWazeAppNotInstalled = false;
+    if (this.appLaunchTimeout) {
+      clearTimeout(this.appLaunchTimeout);
+    }
+    if (this.visibilityChangeListener) {
+      document.removeEventListener('visibilitychange', this.visibilityChangeListener);
+      this.visibilityChangeListener = null;
+    }
+
     window.location.href = appUrl;
-    const now = Date.now();
-    setTimeout(() => {
-      if (document.visibilityState === 'visible' && Date.now() - now < 1000) {
+
+    this.visibilityChangeListener = () => {
+      if (document.visibilityState === 'visible') {
+        clearTimeout(this.appLaunchTimeout);
+        document.removeEventListener('visibilitychange', this.visibilityChangeListener!);
+        this.visibilityChangeListener = null;
+      }
+    };
+    document.addEventListener('visibilitychange', this.visibilityChangeListener);
+
+    this.appLaunchTimeout = setTimeout(() => {
+      if (document.visibilityState === 'visible') {
         this.showMessageWazeAppNotInstalled = true;
       }
-    }, 500);
-    
+      if (this.visibilityChangeListener) {
+        document.removeEventListener('visibilitychange', this.visibilityChangeListener);
+        this.visibilityChangeListener = null;
+      }
+    }, 1000);
+  }
 
-
+  ngOnDestroy(): void {
+    if (this.appLaunchTimeout) {
+      clearTimeout(this.appLaunchTimeout);
+    }
+    if (this.visibilityChangeListener) {
+      document.removeEventListener('visibilitychange', this.visibilityChangeListener);
+    }
   }
 }
