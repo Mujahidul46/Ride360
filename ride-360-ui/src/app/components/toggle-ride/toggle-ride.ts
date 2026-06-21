@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { RidesService } from '../../services/rides.service';
 import { AuthService } from '../../services/auth.service';
 import { Ride } from '../../interfaces/Ride';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './toggle-ride.html',
   styleUrl: './toggle-ride.scss',
 })
-export class ToggleRide implements OnDestroy{
+export class ToggleRide implements OnDestroy {
   isRiding: boolean = false;
   elapsedSeconds: number = 0;
   seconds: number = 0;
