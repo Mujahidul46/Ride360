@@ -1,7 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { RidesService } from '../../services/rides.service';
 import { AuthService } from '../../services/auth.service';
-import { Ride } from '../../interfaces/Ride';
 import { CreateRideDto } from '../../interfaces/CreateRideDto';
 import { Router } from '@angular/router';
 
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './toggle-ride.html',
   styleUrl: './toggle-ride.scss',
 })
-export class ToggleRide implements OnDestroy {
+export class ToggleRide {
   isRiding: boolean = false;
   elapsedSeconds: number = 0;
   seconds: number = 0;
@@ -24,9 +23,6 @@ export class ToggleRide implements OnDestroy {
   startTime: string = '';
   endTime: string = '';
   selectedRating: number = -1;
-  showMessageWazeAppNotInstalled: boolean = false;
-  private appLaunchTimeout: any;
-  private visibilityChangeListener: (() => void) | null = null;
   rideStartGreetings: string[] = [
     'Have a great ride!',
     'Enjoy the journey!',
@@ -143,47 +139,5 @@ export class ToggleRide implements OnDestroy {
 
   closeSaveRideModal() {
     this.showSaveRideModal = false;
-  }
-
-  openWaze(): void {
-    const appUrl = "waze://";
-    this.showMessageWazeAppNotInstalled = false;
-    if (this.appLaunchTimeout) {
-      clearTimeout(this.appLaunchTimeout);
-    }
-    if (this.visibilityChangeListener) {
-      document.removeEventListener('visibilitychange', this.visibilityChangeListener);
-      this.visibilityChangeListener = null;
-    }
-
-    window.location.href = appUrl;
-
-    this.visibilityChangeListener = () => {
-      if (document.visibilityState === 'visible') {
-        clearTimeout(this.appLaunchTimeout);
-        document.removeEventListener('visibilitychange', this.visibilityChangeListener!);
-        this.visibilityChangeListener = null;
-      }
-    };
-    document.addEventListener('visibilitychange', this.visibilityChangeListener);
-
-    this.appLaunchTimeout = setTimeout(() => {
-      if (document.visibilityState === 'visible') {
-        this.showMessageWazeAppNotInstalled = true;
-      }
-      if (this.visibilityChangeListener) {
-        document.removeEventListener('visibilitychange', this.visibilityChangeListener);
-        this.visibilityChangeListener = null;
-      }
-    }, 1000);
-  }
-
-  ngOnDestroy(): void {
-    if (this.appLaunchTimeout) {
-      clearTimeout(this.appLaunchTimeout);
-    }
-    if (this.visibilityChangeListener) {
-      document.removeEventListener('visibilitychange', this.visibilityChangeListener);
-    }
   }
 }
