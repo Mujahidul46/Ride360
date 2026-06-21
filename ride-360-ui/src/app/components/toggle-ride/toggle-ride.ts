@@ -141,4 +141,15 @@ export class ToggleRide {
   closeSaveRideModal() {
     this.showSaveRideModal = false;
   }
+
+  openWaze(): void {
+    const appUrl = "waze://";
+    const webUrl = "https://www.waze.com/live-map"; // if user doesn't have waze app installed, fallback to using web version. Note: Maps does this by default.
+
+    window.location.href = appUrl;
+
+    const timeout = setTimeout(() => {
+      window.location.href = webUrl;
+    }, 500);
+  }
 }
