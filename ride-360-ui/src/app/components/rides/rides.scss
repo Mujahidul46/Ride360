@@ -53,6 +53,8 @@
       font-size: 1.3rem; // Larger name
       font-weight: 700; // Bolder
       color: #2c3e50; // Darker text for prominence
+      word-break: break-all; /* Add this line */
+      min-width: 0; /* Add this line */
     }
 
     .rating {
@@ -62,6 +64,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      white-space: nowrap;
     }
   }
 
@@ -75,6 +78,7 @@
       font-size: 1rem;
       color: #555;
       line-height: 1.4;
+      overflow-wrap: break-word;
     }
 
     .duration {
