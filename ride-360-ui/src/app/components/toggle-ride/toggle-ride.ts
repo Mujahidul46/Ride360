@@ -3,6 +3,7 @@ import { RidesService } from '../../services/rides.service';
 import { AuthService } from '../../services/auth.service';
 import { Ride } from '../../interfaces/Ride';
 import { CreateRideDto } from '../../interfaces/CreateRideDto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toggle-ride',
@@ -36,6 +37,7 @@ export class ToggleRide {
   constructor(
     private ridesService: RidesService,
     private authService: AuthService,
+    private router: Router
   ) {}
 
   toggleRideStatus() {
@@ -123,6 +125,7 @@ export class ToggleRide {
         next: createdRide => {
           console.log('Ride created: ' + createdRide);
           this.showSaveRideModal = false;
+          this.router.navigate(['/rides']);
           this.startTime = '';
           this.endTime = '';
           this.elapsedSeconds = 0;
