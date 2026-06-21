@@ -149,7 +149,9 @@ export class ToggleRide {
     window.location.href = appUrl;
 
     const timeout = setTimeout(() => {
-      window.location.href = webUrl;
+      if (document.visibilityState === 'visible') {
+        window.location.href = webUrl;
+      }
     }, 500);
   }
 }
