@@ -4,6 +4,9 @@
     @if(isRiding) {
         <p class="ride-timer">Riding for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
         <a (click)="openWaze()" class="navigation-button waze-button">Open Waze</a>
+        @if (showMessageWazeAppNotInstalled) {
+            <p>Could not open Waze as app not detected.</p>
+        }
         <a href="https://www.google.com/maps" class="navigation-button maps-button">Open Maps</a>
     }
 </div>

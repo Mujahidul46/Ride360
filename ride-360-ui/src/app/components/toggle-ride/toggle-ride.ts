@@ -24,6 +24,7 @@ export class ToggleRide {
   startTime: string = '';
   endTime: string = '';
   selectedRating: number = -1;
+  showMessageWazeAppNotInstalled: boolean = false;
   rideStartGreetings: string[] = [
     'Have a great ride!',
     'Enjoy the journey!',
@@ -144,16 +145,16 @@ export class ToggleRide {
 
   openWaze(): void {
     const appUrl = "waze://";
-    const webUrl = "https://www.waze.com/live-map"; // if user doesn't have waze app installed, fallback to using web version. Note: Maps does this by default.
-
+    this.showMessageWazeAppNotInstalled = false;
     window.location.href = appUrl;
 
-    const startTime = Date.now();
-
-    const timeout = setTimeout(() => {
-      if (document.visibilityState === 'visible' && Date.now() - startTime < 1000) {
-        window.location.href = webUrl;
+    setTimeout(() => {
+      if (document.visibilityState === 'visible') {
+        this.showMessageWazeAppNotInstalled = true;
       }
-    }, 500);
+    }, 750);
+    
+
+
   }
 }
