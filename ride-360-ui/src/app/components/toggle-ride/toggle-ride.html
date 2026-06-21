@@ -3,7 +3,7 @@
     <p class="ride-greeting" *ngIf="isRiding && elapsedSeconds < 5">{{ selectRandomRideStartGreeting() }}</p>
     @if(isRiding) {
         <p class="ride-timer">Riding for: {{ padTimeToTwoDigits(hours) }}:{{ padTimeToTwoDigits(minutes) }}:{{ padTimeToTwoDigits(seconds) }}</p>
-        <a href="https://www.waze.com" class="navigation-button waze-button">Open Waze</a>
+        <a href="waze://" class="navigation-button waze-button">Open Waze</a>
         <a href="https://www.google.com/maps" class="navigation-button maps-button">Open Maps</a>
     }
 </div>
