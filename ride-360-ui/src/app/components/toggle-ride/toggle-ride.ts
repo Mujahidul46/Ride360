@@ -147,12 +147,12 @@ export class ToggleRide {
     const appUrl = "waze://";
     this.showMessageWazeAppNotInstalled = false;
     window.location.href = appUrl;
-
+    const now = Date.now();
     setTimeout(() => {
-      if (document.visibilityState === 'visible') {
+      if (document.visibilityState === 'visible' && Date.now() - now < 1000) {
         this.showMessageWazeAppNotInstalled = true;
       }
-    }, 750);
+    }, 500);
     
 
 
