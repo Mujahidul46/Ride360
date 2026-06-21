@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './toggle-ride.html',
   styleUrl: './toggle-ride.scss',
 })
-export class ToggleRide {
+export class ToggleRide implements OnDestroy{
   isRiding: boolean = false;
   elapsedSeconds: number = 0;
   seconds: number = 0;
