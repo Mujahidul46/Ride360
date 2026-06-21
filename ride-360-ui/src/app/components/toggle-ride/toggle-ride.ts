@@ -148,8 +148,10 @@ export class ToggleRide {
 
     window.location.href = appUrl;
 
+    const startTime = Date.now();
+
     const timeout = setTimeout(() => {
-      if (document.visibilityState === 'visible') {
+      if (document.visibilityState === 'visible' && Date.now() - startTime < 1000) {
         window.location.href = webUrl;
       }
     }, 500);
