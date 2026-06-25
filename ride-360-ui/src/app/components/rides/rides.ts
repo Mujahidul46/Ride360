@@ -121,12 +121,15 @@ export class Rides {
         return "";
       }
 
-      const timePart = time?.split("T")[1];
-      const hoursMinutesSecondsPart = timePart.split(".")[0];
-      const hoursPart = hoursMinutesSecondsPart.split(":")[0];
-      const minutesPart = hoursMinutesSecondsPart.split(":")[1];
-      
-      return `${hoursPart}:${minutesPart}`;
-      
+      const date = new Date(time);
+
+      // using undefined so the time displayed is whatever time is in the user's country
+      const localTime = date.toLocaleString(undefined, {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      });
+
+      return localTime;
     }
 }

@@ -43,7 +43,7 @@ export class ToggleRide {
     if (!this.isRiding) {
       this.startStopwatch();
       this.showSaveRideModal = false;
-      this.startTime = new Date().toISOString()
+      this.startTime = new Date().toISOString() // UTC time
     }
     else {
       this.stopStopwatch();
@@ -109,7 +109,7 @@ export class ToggleRide {
     return value <= this.selectedRating;
   }
 
-  createRide(rideName: string, rideDescription?: string, categoryId?: number,) {
+  createRide(rideName: string, rideDescription?: string, categoryId?: number) {
     const ride: CreateRideDto = {
       name: rideName,
       description: rideDescription,
