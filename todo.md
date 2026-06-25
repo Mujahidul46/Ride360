@@ -3,7 +3,6 @@ Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
 - make left and right arrows for dates on rides screen indicators
-- fix bug wher saving ride saves it at time which is 1 hour in past.
 - fix bug where user cant create a ride with just ride name , despite other inputs intended to be optional
 - Need to alter the implementation of the timer. The current issue is that when the app has been closed,
 or the user has turned their phone off for few minutes, the current 
@@ -53,3 +52,4 @@ DONE:
 - also fix formatting of cards and get ai to style
 - fix bug when description (and possilby ride name) is one word and very long, it doesnt wrap to next line
 - add link to Waze and maps after start ride (beyya idea)
+- fix bug wher saving ride saves it at time which is 1 hour in past.
