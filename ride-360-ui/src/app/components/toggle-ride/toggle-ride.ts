@@ -110,13 +110,33 @@ export class ToggleRide {
   }
 
   createRide(rideName: string, rideDescription?: string, categoryId?: number) {
+    const dateStartRide = new Date(this.startTime);
+
+    // using undefined so the time displayed is whatever time is in the user's country
+    const localStartTime = dateStartRide.toLocaleString(undefined, {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+
+    const dateEndRide = new Date(this.startTime);
+
+    // using undefined so the time displayed is whatever time is in the user's country
+    const localEndTime = dateEndRide.toLocaleString(undefined, {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+
+
+
     const ride: CreateRideDto = {
       name: rideName,
       description: rideDescription,
       rating: this.selectedRating,
       //categoryId: categoryId,
-      startTime: this.startTime,
-      endTime: this.endTime,
+      startTime: localStartTime,
+      endTime: localEndTime,
     }
 
     this.ridesService.createRide(ride)

@@ -13,7 +13,7 @@ namespace Ride360API.Models
         public TimeSpan? Duration { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
-        public DateTime? StartTime { get; set; }
-        public DateTime EndTime { get; set; } = DateTime.UtcNow;
+        public DateTime StartTime { get; set; } = DateTime.UtcNow; 
+        public DateTime? EndTime { get; set; }
     }
 }

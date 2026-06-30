@@ -33,7 +33,7 @@ namespace ExpenseTrackerAPI.Controllers
 
             if (date.HasValue)
             {
-                rides = rides.Where(r => r.StartTime.HasValue && DateOnly.FromDateTime(r.StartTime.Value) == date);
+                rides = rides.Where(r => r.EndTime.HasValue && DateOnly.FromDateTime(r.StartTime) == date);
             }
                     
             var rideList = rides.ToList();
@@ -70,12 +70,11 @@ namespace ExpenseTrackerAPI.Controllers
                 CategoryId = ride.CategoryId,
                 Rating = ride.Rating,
                 Description = ride.Description,
-                StartTime = ride.StartTime,
                 EndTime = ride.EndTime,
                 UserId = userId
             };
 
-            if (newRide.StartTime.HasValue)
+            if (newRide.EndTime.HasValue)
             {
                 newRide.Duration = ride.EndTime - ride.StartTime;
             }
