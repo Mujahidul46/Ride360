@@ -3,6 +3,6 @@ export interface CreateRideDto {
     description?: string;
     rating?: number;
     categoryId?: number;
-    startTime?: string;
-    endTime: string;
+    startTime: string;
+    endTime?: string;
 }

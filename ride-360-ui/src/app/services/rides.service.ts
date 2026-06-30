@@ -20,6 +20,12 @@ export class RidesService {
         return this.http.get<Ride[]>(url);
     }
 
+    public getActiveRide(userId: number): Observable<Ride> {
+        let url = `${baseApiUrl}/rides/users/${userId}/active`;
+
+        return this.http.get<Ride>(url);
+    }
+
     // public deleteExpense(expenseId: number): Observable<void> {
     //     return this.http.delete<void>(`${baseApiUrl}/expenses/${expenseId}`);
     // }

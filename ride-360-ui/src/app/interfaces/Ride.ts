@@ -11,6 +11,6 @@ export interface Ride {
     category: Category;
     categoryId?: number;
     duration?: string;
-    startTime?: string;
-    endTime: string;
+    startTime: string;
+    endTime?: string;
 }

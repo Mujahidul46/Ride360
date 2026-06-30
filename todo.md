@@ -2,13 +2,14 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
-deploy to prod and then do dotnet ef db update on prod. Currently the start and endtime property schema changes are only in dev; not prod. get in prod.
-- make left and right arrows for dates on rides screen indicators
-- fix bug where user cant create a ride with just ride name , despite other inputs intended to be optional
+investigate how ride duration is displayed
 - Need to alter the implementation of the timer. The current issue is that when the app has been closed,
 or the user has turned their phone off for few minutes, the current 
 timer pauses. This is because browsers stop client-side activity to preserve battery 
 Solution: Need to store the startRide time on the server, and when the app is closed and reopened, the app chekcs if there is an active ride, if so then the client calculates the current time (currentTime = newDate().getTime()) and does currentTime-startTime and the client displays this value
+- make left and right arrows for dates on rides screen indicators
+- fix bug where user cant create a ride with just ride name , despite other inputs intended to be optional
+- DRY violated - create time helper for methods like formatTime()
 - T feedback : edit and delete rides (name / description / rating), have a map for replaying your ride
 - Add to Ride model category (e.g., "Commute", "Leisure", "Work", "Errand", "Travel", "Motorway", "Twisty Roads", "Urban", "Off-road/Trail", "Scenic Route")
 - add calendar for rides view, with text at bottom saying user can click on day to view rides

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Ride360API.Dtos;
 using Ride360API.Models;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseTrackerAPI.Controllers
 {
@@ -42,6 +43,29 @@ namespace ExpenseTrackerAPI.Controllers
 
             return Ok(rideDtos);
         }
+
+        // The GetActiveRide endpoint is used for checking if user is currently on ride
+        // This is needed in case the user closes app - we need to be able to detect they 
+        // are on a ride, and display the correct duration to them.
+        [HttpGet("users/{userId}/active")]
+        public async Task<ActionResult<RideDto>> GetActiveRide(int userId)
+        {
+            // add validation for userId
+            var activeRide = await _dbContext.Rides
+                .Where(r => r.UserId == userId && r.EndTime == null)
+                .OrderByDescending(r => r.StartTime) // In case there is more that one active ride (shouldn't be)
+                .FirstOrDefaultAsync();
+
+            if (activeRide == null)
+            {
+                return NotFound();
+            }
+
+            var activeRideDto = _mapper.Map<RideDto>(activeRide);
+
+            return Ok(activeRideDto);
+        }
+
 
         [HttpGet("{id}")]
         public ActionResult<RideDto> GetRideById(int id)
