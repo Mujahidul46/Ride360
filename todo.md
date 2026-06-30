@@ -2,6 +2,7 @@
 Use ng bootstrap docs for styling: https://ng-bootstrap.github.io/#/home
 
 🚀 Work on NEXT: 
+deploy to prod and then do dotnet ef db update on prod. Currently the start and endtime property schema changes are only in dev; not prod. get in prod.
 - make left and right arrows for dates on rides screen indicators
 - fix bug where user cant create a ride with just ride name , despite other inputs intended to be optional
 - Need to alter the implementation of the timer. The current issue is that when the app has been closed,
